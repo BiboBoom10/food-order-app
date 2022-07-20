@@ -22,15 +22,30 @@ const portalElement = document.getElementById("overlays");
 
 function Modal(props) {
   return (
-    <Cover>
-        {ReactDOM.createPortal(<Backdrop/>, portalElement )}
-        {ReactDOM.createPortal(<ModalOverlay />, portalElement)}
-    </Cover>
+    <BG>
+        {ReactDOM.createPortal(<Backdrop />, portalElement)}
+        {ReactDOM.createPortal(<Layer>{props.children}</Layer>, portalElement)}
+    </BG>
   )
 }
 
-const Cover = styled.div`
+const BG = styled.div`
+    width: 100%;
+    position: absolute;
+    height: 100%;
     background-color: black;
+    opacity: 0.8;
+`;
+
+const Layer = styled("ModalOverlay")`
+    z-index: 10;
+    position: absolute;
+    top: 15rem;
+    left: 2rem;
+    background: #d7d7d7;
+    width: 80%;
+    padding: 1rem;
+    border-radius: 1rem;
 `;
 
 export default Modal;
