@@ -7,7 +7,7 @@ function Cart(props) {
     const cartItems = [{id: "c1", name: "Sushi", amount: 2, price: 9.99}];
 
   return (
-    <Modal>
+    <Modal onClose={props.onClose}>
         <List>
             {cartItems.map((item) => <li key={item.id}>{item.name}</li>)}
             <hr></hr>
@@ -19,8 +19,8 @@ function Cart(props) {
         </Cost>
 
         <OrderingButtons>
-            <Button>Order</Button>
-            <Button>Close</Button>
+            <ButtonTwo>Order</ButtonTwo>
+            <Button onClick={props.onClose}>Close</Button>
         </OrderingButtons>
     </Modal>
   )
@@ -39,6 +39,21 @@ const OrderingButtons = styled.div`
 
 const Button = styled.button`
     padding: 0.25rem 0.5rem;
+    background-color: ;
+    border: 0.1rem solid #fe724c;
+    color: black;
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    margin-left: 0.5rem;
+
+    &:hover{
+        background-color: #ffc529;
+        color: black;
+    }
+`;
+
+const ButtonTwo = styled.button`
+    padding: 0.25rem 0.5rem;
     background-color: #fe724c;
     border: none;
     color: #d7d7d7;
@@ -51,6 +66,7 @@ const Button = styled.button`
         color: black;
     }
 `;
+
 
 const List = styled.ul`
     list-style: none;

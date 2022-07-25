@@ -10,7 +10,7 @@ function Header(props) {
 
         <Heading>
             <h3><MdOutlineFastfood /> Boom Spicy</h3>
-            <Button>
+            <Button onClick={props.onShowCart}>
                 <GrCart />
                 <span> Cart</span>
                 <Number>5</Number>
