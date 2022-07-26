@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Meal1 from '../../assets/Header-Meal.jpg';
 import { GrCart } from 'react-icons/gr';
 import { MdOutlineFastfood } from 'react-icons/md';
+import CartContext from '../../store/cart-context';
 
 function Header(props) {
+
+   const cartCtx = useContext(CartContext);
+
+   const numberOfCartItems = cartCtx.items.reduce((currentNumber, item) => {
+    return currentNumber + item.amount;
+   }, 0);
+
   return (
     <HeaderContent> 
 
@@ -13,7 +21,7 @@ function Header(props) {
             <Button onClick={props.onShowCart}>
                 <GrCart />
                 <span> Cart</span>
-                <Number>5</Number>
+                <Number>{numberOfCartItems}</Number>
             </Button>
         </Heading>
     
